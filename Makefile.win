@@ -1,0 +1,51 @@
+# Project: 计算机224刘烨202205010409课设
+# Makefile created by Dev-C++ 5.16
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+RES      = 计算机224刘烨202205010409课设_private.res
+OBJ      = main.o Body.o Player.o Enemy_one.o Map.o Bullet.o Shop.o $(RES)
+LINKOBJ  = main.o Body.o Player.o Enemy_one.o Map.o Bullet.o Shop.o $(RES)
+LIBS     = -L"D:/c++/Dev-Cpp/MinGW64/lib" -L"D:/c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows -g3
+INCS     = -I"D:/c++/Dev-Cpp/MinGW64/include" -I"D:/c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include"
+CXXINCS  = -I"D:/c++/Dev-Cpp/MinGW64/include" -I"D:/c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include" -I"D:/c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"
+BIN      = 计算机224刘烨202205010409课设.exe
+CXXFLAGS = $(CXXINCS) -Wextra -g3 -pipe
+CFLAGS   = $(INCS) -Wextra -g3 -pipe
+RM       = del /q
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Body.o: Body.cpp
+	$(CPP) -c Body.cpp -o Body.o $(CXXFLAGS)
+
+Player.o: Player.cpp
+	$(CPP) -c Player.cpp -o Player.o $(CXXFLAGS)
+
+Enemy_one.o: Enemy_one.cpp
+	$(CPP) -c Enemy_one.cpp -o Enemy_one.o $(CXXFLAGS)
+
+Map.o: Map.cpp
+	$(CPP) -c Map.cpp -o Map.o $(CXXFLAGS)
+
+Bullet.o: Bullet.cpp
+	$(CPP) -c Bullet.cpp -o Bullet.o $(CXXFLAGS)
+
+Shop.o: Shop.cpp
+	$(CPP) -c Shop.cpp -o Shop.o $(CXXFLAGS)
+
+计算机224刘烨202205010409课设_private.res: 计算机224刘烨202205010409课设_private.rc 
+	$(WINDRES) -i 计算机224刘烨202205010409课设_private.rc --input-format=rc -o 计算机224刘烨202205010409课设_private.res -O coff 
+
